@@ -6,9 +6,11 @@ workflow-job
 workflow-scm-step
 workflow-step-api
 workflow-support
+anything-goes-formatter
 apache-httpcomponents-client-4-api
 display-url-api
 durable-task
+jquery
 mailer
 scm-api
 script-security

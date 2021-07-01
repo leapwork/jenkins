@@ -1,19 +1,41 @@
 Manifest-Version: 1.0
 Group-Id: io.jenkins.plugins
 Short-Name: Jenkins
-Long-Name: TODO Plugin
+Long-Name: Leapwork
 Url: https://github.com/jenkinsci/Jenkins-plugin
 Minimum-Java-Version: 1.8
-Plugin-Version: 1.0-SNAPSHOT (private-07/01/2021 17:36-BirSikander)
+Plugin-Version: 4.0.1
 Hudson-Version: 2.277.1
 Jenkins-Version: 2.277.1
-Plugin-Dependencies: structs:1.22
+Plugin-Dependencies: anything-goes-formatter:1.0,jquery:1.11.2-1,struc
+ ts:1.22
 Plugin-Developers: 
-Support-Dynamic-Loading: true
 Plugin-License-Name: MIT License
 Plugin-License-Url: https://opensource.org/licenses/MIT
 Plugin-ScmUrl: https://github.com/jenkinsci/Jenkins-plugin
-Libraries: C:\Users\BirSikander\newPlug\Jenkins\src\main\resources,C:\
- Users\BirSikander\newPlug\Jenkins\target\classes
-Resource-Path: C:\Users\BirSikander\newPlug\Jenkins\src\main\webapp
+Libraries: C:\Users\BirSikander\eclipse-workspace\Jenkins\src\main\res
+ ources,C:\Users\BirSikander\eclipse-workspace\Jenkins\target\classes,
+ C:\Users\BirSikander\.m2\repository\com\google\code\findbugs\annotati
+ ons\3.0.1\annotations-3.0.1.jar,C:\Users\BirSikander\.m2\repository\c
+ om\google\code\findbugs\jsr305\3.0.1\jsr305-3.0.1.jar,C:\Users\BirSik
+ ander\.m2\repository\com\google\code\gson\gson\2.8.0\gson-2.8.0.jar,C
+ :\Users\BirSikander\.m2\repository\com\ning\async-http-client\1.9.40\
+ async-http-client-1.9.40.jar,C:\Users\BirSikander\.m2\repository\com\
+ sun\istack\istack-commons-runtime\3.0.4\istack-commons-runtime-3.0.4.
+ jar,C:\Users\BirSikander\.m2\repository\com\sun\xml\fastinfoset\FastI
+ nfoset\1.2.13\FastInfoset-1.2.13.jar,C:\Users\BirSikander\.m2\reposit
+ ory\io\netty\netty\3.10.6.Final\netty-3.10.6.Final.jar,C:\Users\BirSi
+ kander\.m2\repository\javax\activation\activation\1.1\activation-1.1.
+ jar,C:\Users\BirSikander\.m2\repository\javax\xml\bind\jaxb-api\2.3.0
+ -b170201.1204\jaxb-api-2.3.0-b170201.1204.jar,C:\Users\BirSikander\.m
+ 2\repository\org\glassfish\jaxb\jaxb-core\2.3.0-b170127.1453\jaxb-cor
+ e-2.3.0-b170127.1453.jar,C:\Users\BirSikander\.m2\repository\org\glas
+ sfish\jaxb\jaxb-runtime\2.3.0-b170127.1453\jaxb-runtime-2.3.0-b170127
+ .1453.jar,C:\Users\BirSikander\.m2\repository\org\glassfish\jaxb\txw2
+ \2.3.0-b170127.1453\txw2-2.3.0-b170127.1453.jar,C:\Users\BirSikander\
+ .m2\repository\org\jvnet\staxex\stax-ex\1.7.8\stax-ex-1.7.8.jar,C:\Us
+ ers\BirSikander\.m2\repository\org\slf4j\slf4j-api\1.7.25\slf4j-api-1
+ .7.25.jar
+Resource-Path: C:\Users\BirSikander\eclipse-workspace\Jenkins\src\main
+ \webapp
 

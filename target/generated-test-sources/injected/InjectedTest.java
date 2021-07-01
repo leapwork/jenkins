@@ -6,13 +6,13 @@ import java.util.*;
  */
 public class InjectedTest extends junit.framework.TestCase {
   public static junit.framework.Test suite() throws Exception {
-    System.out.println("Running tests for "+"io.jenkins.plugins:Jenkins:1.0-SNAPSHOT");
+    System.out.println("Running tests for "+"io.jenkins.plugins:Jenkins:4.0.1");
     Map<String, Object> parameters = new HashMap<String, Object>();
-    parameters.put("basedir","C:\\Users\\BirSikander\\newPlug\\Jenkins");
+    parameters.put("basedir","C:\\Users\\BirSikander\\eclipse-workspace\\Jenkins");
     parameters.put("artifactId","Jenkins");
     parameters.put("packaging","hpi");
-    parameters.put("outputDirectory","C:\\Users\\BirSikander\\newPlug\\Jenkins\\target\\classes");
-    parameters.put("testOutputDirectory","C:\\Users\\BirSikander\\newPlug\\Jenkins\\target\\test-classes");
+    parameters.put("outputDirectory","C:\\Users\\BirSikander\\eclipse-workspace\\Jenkins\\target\\classes");
+    parameters.put("testOutputDirectory","C:\\Users\\BirSikander\\eclipse-workspace\\Jenkins\\target\\test-classes");
     parameters.put("requirePI","true");
     return org.jvnet.hudson.test.PluginAutomaticTestBuilder.build(parameters);
   }
