@@ -18,9 +18,9 @@
         <!-- Baseline Jenkins version you use to build the plugin. Users must have this version or newer to run. -->
         <jenkins.version>2.277.1</jenkins.version>
         <java.level>8</java.level>
-        <gitHubRepo>jenkinsci/${project.artifactId}-plugin</gitHubRepo>    </properties>
+        <gitHubRepo>https://github.com/leapwork/Jenkins.git</gitHubRepo>    </properties>
     <name>Leapwork</name>
-    <url>https://github.com/jenkinsci/${project.artifactId}-plugin</url>
+    <url>https://github.com/leapwork/Jenkins.git</url>
 
     <dependencyManagement>
         <dependencies>
