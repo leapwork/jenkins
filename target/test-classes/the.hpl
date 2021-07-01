@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Group-Id: io.jenkins.plugins
+Short-Name: Jenkins
+Long-Name: TODO Plugin
+Url: https://github.com/jenkinsci/Jenkins-plugin
+Minimum-Java-Version: 1.8
+Plugin-Version: 1.0-SNAPSHOT (private-07/01/2021 17:36-BirSikander)
+Hudson-Version: 2.277.1
+Jenkins-Version: 2.277.1
+Plugin-Dependencies: structs:1.22
+Plugin-Developers: 
+Support-Dynamic-Loading: true
+Plugin-License-Name: MIT License
+Plugin-License-Url: https://opensource.org/licenses/MIT
+Plugin-ScmUrl: https://github.com/jenkinsci/Jenkins-plugin
+Libraries: C:\Users\BirSikander\newPlug\Jenkins\src\main\resources,C:\
+ Users\BirSikander\newPlug\Jenkins\target\classes
+Resource-Path: C:\Users\BirSikander\newPlug\Jenkins\src\main\webapp
+
