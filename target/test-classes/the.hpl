@@ -9,10 +9,10 @@ Hudson-Version: 2.277.1
 Jenkins-Version: 2.277.1
 Plugin-Dependencies: anything-goes-formatter:1.0,jquery:1.11.2-1,struc
  ts:1.22
-Plugin-Developers: 
+Plugin-Developers: Leapwork DevOps::prioritysupport@leapwork.com
 Plugin-License-Name: MIT License
 Plugin-License-Url: https://opensource.org/licenses/MIT
-Plugin-ScmUrl: https://github.com/jenkinsci/Jenkins-plugin
+Plugin-ScmUrl: https://github.com/leapwork/Jenkins.git
 Libraries: C:\Users\BirSikander\eclipse-workspace\Jenkins\src\main\res
  ources,C:\Users\BirSikander\eclipse-workspace\Jenkins\target\classes,
  C:\Users\BirSikander\.m2\repository\com\google\code\findbugs\annotati

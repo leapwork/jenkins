@@ -125,19 +125,19 @@
             <url>https://opensource.org/licenses/MIT</url>
         </license>
     </licenses>
-    <!-- If you want this to appear on the plugin site page:
+    <!-- If you want this to appear on the plugin site page:-->
     <developers>
       <developer>
-        <id>bhacker</id>
-        <name>Bob Q. Hacker</name>
-        <email>bhacker@nowhere.net</email>
+       
+        <name>Leapwork DevOps</name>
+        <email>prioritysupport@leapwork.com</email>
       </developer>
-    </developers> -->
+    </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/${gitHubRepo}.git</connection>
+        <connection>scm:git:git://github.com/leapwork/Jenkins.git</connection>
         <developerConnection>scm:git:git@github.com:${gitHubRepo}.git</developerConnection>
-        <url>https://github.com/${gitHubRepo}</url>
+        <url>https://github.com/leapwork/Jenkins.git</url>
         <tag>${scmTag}</tag>
     </scm>
 
