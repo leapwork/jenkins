@@ -183,7 +183,6 @@ public final class PluginHandler {
                         for (JsonElement jsonScheduleElement : jsonScheduleList) {
                             JsonObject jsonSchedule = jsonScheduleElement.getAsJsonObject();
 
-                            if(jsonSchedule.get("Type").getAsString().contentEquals("TemporaryScheduleInfo")) continue;
 
                             UUID Id = Utils.defaultUuidIfNull(jsonSchedule.get("Id"), UUID.randomUUID());
                             String Title = Utils.defaultStringIfNull(jsonSchedule.get("Title"), "null Title");
