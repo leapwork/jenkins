@@ -1,5 +1,5 @@
 # Leapwork Integration
-This is Leapwork plugin for Jenkins (version 2.60.3 or later)
+This is Leapwork plugin for Jenkins (version 2.277.1 or later)
 
 # More Details
 Leapwork is a mighty automation testing system and now it can be used for running [smoke, functional, acceptance] tests, generating reports and a lot more in Jenkins. You can easily configure integration directly in Jenkins enjoying UI friendly configuration page with easy connection and test suites selection.
