@@ -1,0 +1,6 @@
+META-INF\annotations\hudson.Extension.txt
+META-INF\annotations\org.kohsuke.accmod.Restricted
+com\Leapwork\Leapwork_plugin\LeapworkJenkinsBridgeBuilder.stapler
+com\Leapwork\Leapwork_plugin\LeapworkJenkinsBridgeBuilder\DescriptorImpl\doFillLeapworkDoneStatusAsItems.stapler
+com\Leapwork\Leapwork_plugin\LeapworkJenkinsBridgeBuilder\DescriptorImpl\doCheckLeapworkDelay.stapler
+META-INF\annotations\hudson.Extension
