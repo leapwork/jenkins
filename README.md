@@ -19,15 +19,7 @@ Leapwork is a mighty automation testing system and now it can be used for runnin
 - Or simply install hpi-file from the "target" folder: Manage Jenkins -> Manage Plugins -> Advanced -> Upload Plugin -> Choose that hpi-file -> Press Upload
 
 # Update 4.0.1
-- For Leapwork version 2021.1
-- Removed "Access key" info from console log.
-- Fixed bug when schedules are executing in non-ordered way.
-- Now it is possible to insert a list of schedules to "Schedule Names" text box. List of names must be new line or comma separated.
-Be noticed that by clicking on any checkbox with schedule to select, using "Get Schedules" button, all non-existing or disabled schedules will be removed from "Schedule names" text box.
-- Added "Schedule variables" non-mandatory field. Schedule variables must be listed in "key : value" way and separated by new line or comma.
-Be noticed that all the schedules will be run with this list of variables.
-- Boolean field "LeapworkWritePassedFlowKeyFrames" is not mandatory anymore.
-- Fixed problem with enforcer for compiling the plugin using sources.
+- Added support for Leapwork version 2021.1 and newer
 - Uses new Leapwork v4 API, API v3 is not supported
 
 # Instruction
