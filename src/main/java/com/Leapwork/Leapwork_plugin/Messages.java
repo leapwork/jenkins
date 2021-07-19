@@ -43,7 +43,7 @@ public class Messages {
     public static final String PLUGIN_ERROR_FINISH = "Leapwork for Jenkins plugin finished with errors!";
 
     public static final String CONTROLLER_RESPONDED_WITH_ERRORS = "Controller responded with errors! Please check controller logs and try again! If does not help, try to restart controller.";
-    public static final String PLEASE_CONTACT_SUPPORT = "If nothing helps, please contact support https://leapwork.com/chat and provide the next information:\n1.Plugin Logs\n2.Leapwork and plugin version\n3.Controller logs from the moment you've run the plugin.\n4.Assets without videos if possible.\nYou can find them {Path to Leapwork}/LEAPWORK/Assets\nThank you";
+    public static final String PLEASE_CONTACT_SUPPORT = "If nothing helps, please contact support https://Leapwork.com/chat and provide the next information:\n1.Plugin Logs\n2.Leapwork and plugin version\n3.Controller logs from the moment you've run the plugin.\n4.Assets without videos if possible.\nYou can find them {Path to Leapwork}/Leapwork/Assets\nThank you";
 
     public static final String ERROR_CODE_MESSAGE = "Code: %1$s Status: %2$s!";
     public static final String COULD_NOT_CONNECT_TO = "Could not connect to %1$s! Check it and try again! ";
@@ -53,7 +53,7 @@ public class Messages {
     public static final String EXECUTION_EXCEPTION = "Execution exception: %1$s!";
     public static final String IO_EXCEPTION = "I/O exception: %1$s!";
 
-    public static final String LICENSE_EXPIRED = "Your Leapwork license has expired. Please contact support https://leapwork.com/support";
+    public static final String LICENSE_EXPIRED = "Your Leapwork license has expired. Please contact support https://Leapwork.com/support";
 
     public static final String STOPPING_SCHEDULE = "Stopping schedule %1$s[%2$s]!";
 
@@ -86,10 +86,10 @@ public class Messages {
     public static final String SCHEDULE_VARIABLE_KEY_DUPLICATE = "Key value pair with the same key already exists: %1$s. This pair will be ignored";
     public static final String SCHEDULE_VARIABLE_REQUEST_PART = "Schedule variables request part: %1$s";
 
-    public static final String INPUT_VALUES_MESSAGE = "LeapWork Plugin input parameters:";
-    public static final String INPUT_HOSTNAME_VALUE = "LEAPWORK controller hostname: %1$s";
-    public static final String INPUT_PORT_VALUE = "LEAPWORK controller port: %1$s";
-    public static final String INPUT_ACCESS_KEY_VALUE = "LEAPWORK controller Access Key: %1$s";
+    public static final String INPUT_VALUES_MESSAGE = "Leapwork Plugin input parameters:";
+    public static final String INPUT_HOSTNAME_VALUE = "Leapwork controller hostname: %1$s";
+    public static final String INPUT_PORT_VALUE = "Leapwork controller port: %1$s";
+    public static final String INPUT_ACCESS_KEY_VALUE = "Leapwork controller Access Key: %1$s";
     public static final String INPUT_REPORT_VALUE = "JUnit report file name: %1$s";
     public static final String INPUT_WORKSPACE_VALUE = "Workspace: %1$s";
     public static final String INPUT_SCHEDULE_NAMES_VALUE = "Schedule names: %1$s";
