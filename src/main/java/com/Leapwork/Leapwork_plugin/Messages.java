@@ -77,11 +77,9 @@ public class Messages {
     public static final String TIME_DELAY_NUMBER_IS_INVALID = "Time delay number is invalid: %1$s, setting to default %2$s";
     public static final String FULL_REPORT_FILE_PATH = "Creating report file by path: %1$s";
     public static final String SCHEDULE_DISABLED = "Schedule %1$s[%2$s] is disabled";
-
     public static final String INVALID_SCHEDULE_VARIABLE = "Failed to parse variable: %1$s";
     public static final String SCHEDULE_VARIABLE_KEY_DUPLICATE = "Key value pair with the same key already exists: %1$s. This pair will be ignored";
     public static final String SCHEDULE_VARIABLE_REQUEST_PART = "Schedule variables request part: %1$s";
-
     public static final String INPUT_VALUES_MESSAGE = "Leapwork Plugin input parameters:";
     public static final String INPUT_HOSTNAME_VALUE = "Leapwork controller hostname: %1$s";
     public static final String INPUT_PORT_VALUE = "Leapwork controller port: %1$s";
