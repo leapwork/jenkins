@@ -1,5 +1,0 @@
-<?jelly escape-by-default='true'?>
-
-<div>
-  Integrates Leapwork codeless test automation with Jenkins. Run tests, get results, generate reports.
-</div>
