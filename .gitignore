@@ -1,11 +1,1 @@
-/target/Jenkins
-/target/antrun
-/target/classes
-/target/generated-sources/
-/target/generated-test-sources/
-/target/jenkins-for-test
-/target/maven-status/
-/target/surefire-reports
-/target/test-classes
-/target/tmp/
-/target/Jenkins-4.0.1.pom
+/target/
