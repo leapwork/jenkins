@@ -16,11 +16,7 @@ Leapwork is a mighty automation testing system and now it can be used for runnin
 # Installing
 - Use maven 
 - Command: mvn package 
-- Or simply install hpi-file from the "target" folder: Manage Jenkins -> Manage Plugins -> Advanced -> Upload Plugin -> Choose that hpi-file -> Press Upload
-
-# Update 4.0.1
-- Added support for Leapwork version 2021.1 and newer
-- Uses new Leapwork v4 API, API v3 is not supported
+- Or simply install Leapwork.hpi file from the "Releases" section: Manage Jenkins -> Manage Plugins -> Advanced -> Upload Plugin -> Choose that hpi-file -> Press Upload
 
 # Instruction
 1. Add Build "Leapwork" to your job from drop down.
