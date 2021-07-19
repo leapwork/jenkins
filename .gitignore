@@ -1,1 +1,8 @@
+/target/Jenkins
+/target/antrun
+/target/classes
+/target/surefire-reports
+/target/test-classes
+/target/Jenkins-4.0.1.pom
+/target/tmp/
 /target/
