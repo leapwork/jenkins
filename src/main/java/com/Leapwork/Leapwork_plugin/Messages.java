@@ -72,10 +72,8 @@ public class Messages {
     public static final String DATABASE_NOT_RESPONDING = "Database is not responding";
 
     public static final String INVALID_VARIABLE_KEY_NAME = "Variable name is invalid or variable with such name is already in request";
-
     public static final String NO_DISK_SPACE = "No enough disk space to start schedule";
     public static final String PORT_NUMBER_IS_INVALID = "Port number is invalid, setting to default %1$d";
-
     public static final String TIME_DELAY_NUMBER_IS_INVALID = "Time delay number is invalid: %1$s, setting to default %2$s";
     public static final String FULL_REPORT_FILE_PATH = "Creating report file by path: %1$s";
 
