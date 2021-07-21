@@ -1,2 +1,2 @@
-/target/*
-!/target/Jenkins.hpi
+/target/
+!/target/*.hpi
