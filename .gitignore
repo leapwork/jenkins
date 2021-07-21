@@ -1,2 +1,2 @@
-/target/
-!/target/*.hpi
+/target/*
+!/target/Leapwork.hpi
