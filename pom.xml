@@ -21,10 +21,10 @@
 			this version or newer to run. -->
 		<jenkins.version>2.277.1</jenkins.version>
 		<java.level>8</java.level>
-		<gitHubRepo>https://github.com/leapwork/Jenkins.git</gitHubRepo>
+		<gitHubRepo>https://github.com/leapwork/Jenkins-plugin.git</gitHubRepo>
 	</properties>
 	<name>Leapwork</name>
-	<url>https://github.com/leapwork/Jenkins.git</url>
+	<url>https://github.com/leapwork/Jenkins-plugin.git</url>
 
 	<dependencyManagement>
 		<dependencies>
@@ -139,9 +139,9 @@
 	</developers>
 
 	<scm>
-		<connection>scm:git:git://github.com/leapwork/Jenkins.git</connection>
+		<connection>scm:git:git://github.com/leapwork/Jenkins-plugin.git</connection>
 		<developerConnection>scm:git:git@github.com:${gitHubRepo}.git</developerConnection>
-		<url>https://github.com/leapwork/Jenkins.git</url>
+		<url>https://github.com/leapwork/Jenkins-plugin.git</url>
 		<tag>${scmTag}</tag>
 	</scm>
 
