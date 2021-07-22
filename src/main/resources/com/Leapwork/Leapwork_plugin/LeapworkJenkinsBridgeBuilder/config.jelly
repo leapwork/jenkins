@@ -64,7 +64,7 @@
 var script = document.createElement('script');
 script.type = "text/javascript";
 script.language="JavaScript" ;
-script.src = "${rootURL}/plugin/Leapwork/buttonscript.js";
+script.src = "${rootURL}/plugin/leapwork/buttonscript.js";
 document.body.appendChild(script);
 
 script.onload = script.onerror = function() {
