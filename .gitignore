@@ -1,2 +1,8 @@
 /target/*
-!/target/Jenkins.hpi
+!/target/Leapwork.hpi
+/target/
+/.classpath
+/.project
+/.metadata/*
+/.mvn/*
+/.settings/*
