@@ -6,11 +6,11 @@
 	<parent>
 		<groupId>org.jenkins-ci.plugins</groupId>
 		<artifactId>plugin</artifactId>
-		<version>4.16</version>
+		<version>4.23</version>
 		<relativePath />
 	</parent>
 	<groupId>io.jenkins.plugins</groupId>
-	<artifactId>Jenkins</artifactId>
+	<artifactId>leapwork</artifactId>
 	<version>4.0.1</version>
 	<packaging>hpi</packaging>
 	<properties>
@@ -21,10 +21,10 @@
 			this version or newer to run. -->
 		<jenkins.version>2.277.1</jenkins.version>
 		<java.level>8</java.level>
-		<gitHubRepo>https://github.com/leapwork/Jenkins.git</gitHubRepo>
+		<gitHubRepo>https://github.com/leapwork/Jenkins-plugin.git</gitHubRepo>
 	</properties>
 	<name>Leapwork</name>
-	<url>https://github.com/leapwork/Jenkins.git</url>
+	<url>https://github.com/leapwork/Jenkins-plugin.git</url>
 
 	<dependencyManagement>
 		<dependencies>
@@ -71,7 +71,7 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-nop</artifactId>
-			<version>1.7.25</version>
+			<version>1.7.31</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -92,14 +92,14 @@
 		<dependency>
 			<groupId>javax.xml.bind</groupId>
 			<artifactId>jaxb-api</artifactId>
-			<version>2.3.0-b170201.1204</version>
+			<version>2.4.0-b180830.0359</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/javax.activation/activation -->
 		<dependency>
 			<groupId>javax.activation</groupId>
 			<artifactId>activation</artifactId>
-			<version>1.1</version>
+			<version>1.1.1</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.glassfish.jaxb/jaxb-runtime -->
@@ -112,7 +112,7 @@
 		<dependency>
 			<groupId>com.google.code.findbugs</groupId>
 			<artifactId>annotations</artifactId>
-			<version>3.0.1</version>
+			<version>3.0.1u2</version>
 		</dependency>
 
 
@@ -139,9 +139,9 @@
 	</developers>
 
 	<scm>
-		<connection>scm:git:git://github.com/leapwork/Jenkins.git</connection>
+		<connection>scm:git:git://github.com/leapwork/Jenkins-plugin.git</connection>
 		<developerConnection>scm:git:git@github.com:${gitHubRepo}.git</developerConnection>
-		<url>https://github.com/leapwork/Jenkins.git</url>
+		<url>https://github.com/leapwork/Jenkins-plugin.git</url>
 		<tag>${scmTag}</tag>
 	</scm>
 

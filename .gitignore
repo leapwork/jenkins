@@ -1,2 +1,7 @@
 /target/*
-!/target/Jenkins.hpi
+/target/
+/.classpath
+/.project
+/.metadata/*
+/.mvn/*
+/.settings/*
