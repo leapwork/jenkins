@@ -1,5 +1,4 @@
 /target/*
-!/target/Leapwork.hpi
 /target/
 /.classpath
 /.project
