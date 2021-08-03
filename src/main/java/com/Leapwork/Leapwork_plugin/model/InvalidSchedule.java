@@ -1,23 +1,20 @@
 package com.Leapwork.Leapwork_plugin.model;
 
-
 public final class InvalidSchedule {
 
-    private String name;
-    private String stackTrace;
+	private String name;
+	private String stackTrace;
 
-    public InvalidSchedule(String name, String stackTrace)
-    {
-        this.name = name;
-        this.stackTrace = stackTrace;
-    }
+	public InvalidSchedule(String name, String stackTrace) {
+		this.name = name;
+		this.stackTrace = stackTrace;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public String getStackTrace() {
-        return stackTrace;
-    }
+	public String getStackTrace() {
+		return stackTrace;
+	}
 }
-
