@@ -66,12 +66,12 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>1.7.25</version>
+			<version>1.7.32</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-nop</artifactId>
-			<version>1.7.31</version>
+			<version>1.7.32</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -139,10 +139,10 @@
 	</developers>
 
 	<scm>
-		<connection>scm:git:git://github.com/leapwork/Jenkins-plugin.git</connection>
-		<developerConnection>scm:git:git@github.com:${gitHubRepo}.git</developerConnection>
+	<connection>scm:git:https://github.com/leapwork/Jenkins-plugin.git</connection>
+		<developerConnection>scm:git:git@github.com:leapwork/birSikanderMahajan/Jenkins-plugin.git</developerConnection>
 		<url>https://github.com/leapwork/Jenkins-plugin.git</url>
-		<tag>${scmTag}</tag>
+		<tag>head</tag>
 	</scm>
 
 	<repositories>
