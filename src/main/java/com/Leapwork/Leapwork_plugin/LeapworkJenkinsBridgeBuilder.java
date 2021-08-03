@@ -327,6 +327,7 @@ public class LeapworkJenkinsBridgeBuilder extends Builder implements SimpleBuild
 							resultRun.incFailed();
 						resultRun.incTotal();
 						break;
+						default:
 
 					}
 

@@ -7,6 +7,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ning.http.client.AsyncHttpClient;
 import com.ning.http.client.Response;
+
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import hudson.EnvVars;
 import hudson.FilePath;
 import hudson.model.Run;
@@ -34,9 +36,9 @@ public final class PluginHandler {
 
     private PluginHandler(){}
 
-    public static PluginHandler getInstance()
+    public synchronized static PluginHandler getInstance()
     {
-        if( pluginHandler == null ) pluginHandler = new PluginHandler();
+        if( pluginHandler == null ) { pluginHandler = new PluginHandler();}
 
         return pluginHandler;
     }
@@ -237,7 +239,7 @@ public final class PluginHandler {
                     StringBuilder errorMessage401 = new StringBuilder(String.format(Messages.ERROR_CODE_MESSAGE, response.getStatusCode(), response.getStatusText()));
                     appendLine(errorMessage401,Messages.INVALID_ACCESS_KEY);
                     OnFailedToGetScheduleTitleIdMap(null,errorMessage401.toString(),listener);
-
+break;
                 case 500:
                     StringBuilder errorMessage500 = new StringBuilder(String.format(Messages.ERROR_CODE_MESSAGE, response.getStatusCode(), response.getStatusText()));
                     appendLine(errorMessage500,Messages.CONTROLLER_RESPONDED_WITH_ERRORS);
@@ -246,7 +248,7 @@ public final class PluginHandler {
                 default:
                     StringBuilder errorMessage = new StringBuilder(String.format(Messages.ERROR_CODE_MESSAGE, response.getStatusCode(), response.getStatusText()));
                     OnFailedToGetScheduleTitleIdMap(null,errorMessage.toString(),listener);
-
+                    throw new Exception(errorMessage.toString());
             }
         }
         catch (ConnectException | UnknownHostException e )
@@ -442,10 +444,16 @@ public final class PluginHandler {
                     listener.error(String.format(Messages.STOP_RUN_FAIL,scheduleTitle,runId.toString()));
 
             }
-        } catch (Exception e)
+        } 
+        
+        catch (RuntimeException e) {
+			throw new RuntimeException(e);
+		}
+        catch (Exception e)
         {
             listener.error(String.format(Messages.STOP_RUN_FAIL,scheduleTitle,runId.toString()));
             listener.error(e.getMessage());
+           throw e;
         }
         finally
         {
@@ -468,7 +476,12 @@ public final class PluginHandler {
             {
                 File file = new File(workspace.toURI().getPath(),JUnitReportFile);
                 listener.getLogger().println(String.format(Messages.FULL_REPORT_FILE_PATH,file.getCanonicalPath()));
-                if(!file.exists()) file.createNewFile();
+              if(!file.exists()) {
+            	  try {file.createNewFile();}
+catch (Exception e) {
+	throw e;
+}              }
+            	  
                 reportFile = new FilePath(file);
             }
 
@@ -503,6 +516,7 @@ public final class PluginHandler {
         }
     }
 
+    
     public String getRunStatus(AsyncHttpClient client, String controllerApiHttpAddress, String accessKey, UUID runId) throws Exception {
 
         String uri = String.format(Messages.GET_RUN_STATUS_URI, controllerApiHttpAddress, runId.toString());
@@ -602,7 +616,7 @@ public final class PluginHandler {
 
         }
     }
-
+    @SuppressFBWarnings(value = "DLS_DEAD_LOCAL_STORE")
     public RunItem getRunItem(AsyncHttpClient client, String controllerApiHttpAddress, String accessKey,  UUID runItemId, String scheduleTitle,boolean doneStatusAsSuccess, boolean writePassedKeyframes,  final TaskListener listener) throws Exception {
 
         String uri = String.format(Messages.GET_RUN_ITEM_URI, controllerApiHttpAddress, runItemId.toString());
@@ -658,7 +672,7 @@ public final class PluginHandler {
                 else
                 {
                     Failure keyframes = getRunItemKeyFrames(client,controllerApiHttpAddress,accessKey,runItemId,runItem,scheduleTitle,environmentTitle,listener);
-                    runItem.failure = keyframes;
+					/* runItem.failure = keyframes; */
                     return runItem;
                 }
 

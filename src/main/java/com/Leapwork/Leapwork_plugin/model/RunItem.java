@@ -28,7 +28,7 @@ public final class RunItem
         this.caseStatus = caseStatus;
         elapsedTime = elapsed;
         classname = schedule;
-        failure = null;
+
     }
 
     public RunItem(String caseTitle, String caseStatus, double elapsed, String stacktrace, String schedule)
@@ -36,7 +36,7 @@ public final class RunItem
         caseName = caseTitle;
         this.caseStatus = caseStatus;
         elapsedTime = elapsed;
-        failure = new Failure(stacktrace);
+       
         classname = schedule;
     }
 
