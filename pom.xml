@@ -138,7 +138,7 @@
 
 	<scm>
 	<connection>scm:git:https://github.com/leapwork/Jenkins-plugin.git</connection>
-		<developerConnection>scm:git:git@github.com:leapwork/birSikanderMahajan/Jenkins-plugin.git</developerConnection>
+		<developerConnection>scm:git:git@github.com:leapwork/Jenkins-plugin.git</developerConnection>
 		<url>https://github.com/leapwork/Jenkins-plugin.git</url>
 		<tag>leapwork-4.0.1</tag>
 	</scm>
