@@ -220,7 +220,7 @@ public final class PluginHandler {
 						String.format(Messages.ERROR_CODE_MESSAGE, response.getStatusCode(), response.getStatusText()));
 				appendLine(errorMessage500, Messages.CONTROLLER_RESPONDED_WITH_ERRORS);
 				OnFailedToGetScheduleTitleIdMap(null, errorMessage500.toString(), listener);
-
+				break;
 			default:
 				StringBuilder errorMessage = new StringBuilder(
 						String.format(Messages.ERROR_CODE_MESSAGE, response.getStatusCode(), response.getStatusText()));
@@ -384,24 +384,25 @@ public final class PluginHandler {
 						String.format(Messages.ERROR_CODE_MESSAGE, response.getStatusCode(), response.getStatusText()));
 				listener.error(String.format(Messages.NO_SUCH_RUN_WAS_FOUND, runId, scheduleTitle));
 				listener.error(String.format(Messages.STOP_RUN_FAIL, scheduleTitle, runId.toString()));
-
+				break;
 			case 446:
 				listener.error(
 						String.format(Messages.ERROR_CODE_MESSAGE, response.getStatusCode(), response.getStatusText()));
 				listener.error(Messages.NO_DISK_SPACE);
 				listener.error(String.format(Messages.STOP_RUN_FAIL, scheduleTitle, runId.toString()));
-
+				break;
 			case 455:
 				listener.error(
 						String.format(Messages.ERROR_CODE_MESSAGE, response.getStatusCode(), response.getStatusText()));
 				listener.error(Messages.DATABASE_NOT_RESPONDING);
 				listener.error(String.format(Messages.STOP_RUN_FAIL, scheduleTitle, runId.toString()));
-
+				break;
 			case 500:
 				listener.error(
 						String.format(Messages.ERROR_CODE_MESSAGE, response.getStatusCode(), response.getStatusText()));
 				listener.error(Messages.CONTROLLER_RESPONDED_WITH_ERRORS);
 				listener.error(String.format(Messages.STOP_RUN_FAIL, scheduleTitle, runId.toString()));
+				break;
 			default:
 				listener.error(
 						String.format(Messages.ERROR_CODE_MESSAGE, response.getStatusCode(), response.getStatusText()));

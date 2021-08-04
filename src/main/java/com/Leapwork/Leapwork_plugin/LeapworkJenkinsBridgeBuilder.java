@@ -51,7 +51,6 @@ public class LeapworkJenkinsBridgeBuilder extends Builder implements SimpleBuild
 	private String leapworkScheduleVariables;
 
 	private static PluginHandler pluginHandler = PluginHandler.getInstance();
-
 	// Fields in config.jelly must match the parameter names in the
 	// "DataBoundConstructor"
 	@DataBoundConstructor
