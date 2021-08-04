@@ -378,7 +378,7 @@ public final class PluginHandler {
 						String.format(Messages.ERROR_CODE_MESSAGE, response.getStatusCode(), response.getStatusText()));
 				listener.error(Messages.INVALID_ACCESS_KEY);
 				listener.error(String.format(Messages.STOP_RUN_FAIL, scheduleTitle, runId.toString()));
-
+				break;
 			case 404:
 				listener.error(
 						String.format(Messages.ERROR_CODE_MESSAGE, response.getStatusCode(), response.getStatusText()));
