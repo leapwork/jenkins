@@ -51,7 +51,6 @@ public class LeapworkJenkinsBridgeBuilder extends Builder implements SimpleBuild
 	private String leapworkScheduleVariables;
 
 	private static PluginHandler pluginHandler = PluginHandler.getInstance();
-
 	// Fields in config.jelly must match the parameter names in the
 	// "DataBoundConstructor"
 	@DataBoundConstructor
@@ -180,8 +179,9 @@ public class LeapworkJenkinsBridgeBuilder extends Builder implements SimpleBuild
 				String schTitle = schedulesIdTitleHashMap.get(schId);
 				LeapworkRun run = new LeapworkRun(schId.toString(), schTitle);
 
-				UUID runId = pluginHandler.runSchedule(mainClient, controllerApiHttpAddress, Secret.toString(leapworkAccessKey), schId,
-						schTitle, listener, run, scheduleVariablesRequestPart);
+				UUID runId = pluginHandler.runSchedule(mainClient, controllerApiHttpAddress,
+						Secret.toString(leapworkAccessKey), schId, schTitle, listener, run,
+						scheduleVariablesRequestPart);
 				if (runId != null) {
 					resultsMap.put(runId, run);
 					CollectScheduleRunResults(controllerApiHttpAddress, Secret.toString(leapworkAccessKey), runId,
@@ -327,7 +327,7 @@ public class LeapworkJenkinsBridgeBuilder extends Builder implements SimpleBuild
 							resultRun.incFailed();
 						resultRun.incTotal();
 						break;
-
+					default:
 					}
 
 				}
