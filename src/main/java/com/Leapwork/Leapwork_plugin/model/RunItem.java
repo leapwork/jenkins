@@ -4,6 +4,8 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
 @XmlRootElement(name = "testcase")
 public final class RunItem {
 
@@ -14,12 +16,14 @@ public final class RunItem {
 	private double elapsedTime;
 
 	private String classname;
+
 	@XmlElement
 	public Failure failure;
 
 	public RunItem() {
 	}
 
+	@SuppressFBWarnings(value = "URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD")
 	public RunItem(String caseTitle, String caseStatus, double elapsed, String schedule) {
 		caseName = caseTitle;
 		this.caseStatus = caseStatus;
@@ -29,6 +33,7 @@ public final class RunItem {
 
 	}
 
+	@SuppressFBWarnings(value = "URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD")
 	public RunItem(String caseTitle, String caseStatus, double elapsed, String stacktrace, String schedule) {
 		caseName = caseTitle;
 		this.caseStatus = caseStatus;

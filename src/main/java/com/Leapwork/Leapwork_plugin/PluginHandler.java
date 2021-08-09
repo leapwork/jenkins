@@ -409,9 +409,9 @@ public final class PluginHandler {
 				listener.error(String.format(Messages.STOP_RUN_FAIL, scheduleTitle, runId.toString()));
 
 			}
-		}
-
-		catch (Exception e) {
+		} catch (RuntimeException e) {
+			throw e;
+		} catch (Exception e) {
 			listener.error(String.format(Messages.STOP_RUN_FAIL, scheduleTitle, runId.toString()));
 			listener.error(e.getMessage());
 		} finally {
@@ -632,6 +632,7 @@ public final class PluginHandler {
 			} else {
 				Failure keyframes = getRunItemKeyFrames(client, controllerApiHttpAddress, accessKey, runItemId, runItem,
 						scheduleTitle, environmentTitle, listener);
+				
 				runItem.failure = keyframes;
 				return runItem;
 			}
@@ -781,4 +782,5 @@ public final class PluginHandler {
 
 		return reportName;
 	}
+	
 }
