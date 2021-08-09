@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>io.jenkins.plugins</groupId>
 	<artifactId>leapwork</artifactId>
-	<version>4.0.1</version>
+	<version>4.0.1B-SNAPSHOT</version>
 	<packaging>hpi</packaging>
 	<properties>
 		<revision>1.0</revision>
@@ -137,9 +137,9 @@
 
 	<scm>
 	<connection>scm:git:https://github.com/leapwork/Jenkins-plugin.git</connection>
-		<developerConnection>scm:git:git@github.com:leapwork/Jenkins-plugin.git</developerConnection>
+		<developerConnection>scm:git:git@github.com:leapwork/birSikanderMahajan/Jenkins-plugin.git</developerConnection>
 		<url>https://github.com/leapwork/Jenkins-plugin.git</url>
-		<tag>leapwork-4.0.1</tag>
+		<tag>head</tag>
 	</scm>
 
 	<repositories>
