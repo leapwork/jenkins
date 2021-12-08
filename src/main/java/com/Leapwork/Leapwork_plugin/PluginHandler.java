@@ -606,8 +606,6 @@ public final class PluginHandler {
 			JsonElement jsonFlowStatus = flowInfo.get("Status");
 			String flowStatus = Utils.defaultStringIfNull(jsonFlowStatus, "NoStatus");
 
-			// AgentInfo
-			
 			JsonElement jsonRunId = jsonRunItem.get("AutomationRunId");
 			UUID runId = Utils.defaultUuidIfNull(jsonRunId, UUID.randomUUID());
 
