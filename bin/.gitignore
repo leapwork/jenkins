@@ -1,0 +1,9 @@
+target
+
+# mvn hpi:run
+/work
+
+# Eclipse project files
+/.settings
+/.classpath
+/.project
