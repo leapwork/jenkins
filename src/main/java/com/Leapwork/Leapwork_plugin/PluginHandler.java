@@ -607,15 +607,7 @@ public final class PluginHandler {
 			String flowStatus = Utils.defaultStringIfNull(jsonFlowStatus, "NoStatus");
 
 			// AgentInfo
-			JsonElement jsonAgentInfo = jsonRunItem.get("AgentInfo");
-			JsonObject AgentInfo = jsonAgentInfo.getAsJsonObject();
-			JsonElement jsonEnvironmentId = AgentInfo.get("EnvironmentId");
-			UUID environmentId = Utils.defaultUuidIfNull(jsonEnvironmentId, UUID.randomUUID());
-			JsonElement jsonEnvironmentTitle = AgentInfo.get("EnvironmentTitle");
-			String environmentTitle = Utils.defaultStringIfNull(jsonEnvironmentTitle);
-			JsonElement jsonEnvironmentConnectionType = AgentInfo.get("ConnectionType");
-			String environmentConnectionType = Utils.defaultStringIfNull(jsonEnvironmentConnectionType, "Not defined");
-
+			
 			JsonElement jsonRunId = jsonRunItem.get("AutomationRunId");
 			UUID runId = Utils.defaultUuidIfNull(jsonRunId, UUID.randomUUID());
 
@@ -632,7 +624,7 @@ public final class PluginHandler {
 				return runItem;
 			} else {
 				Failure keyframes = getRunItemKeyFrames(client, controllerApiHttpAddress, accessKey, runItemId, runItem,
-						scheduleTitle, environmentTitle, listener);
+						scheduleTitle, flowTitle, listener);
 				runItem.failure = keyframes;
 				return runItem;
 			}
@@ -694,21 +686,30 @@ public final class PluginHandler {
 				StringBuilder fullKeyframes = new StringBuilder("");
 
 				for (JsonElement jsonKeyFrame : jsonKeyframes) {
+					String keyFrame = "";
+					
 					String level = Utils.defaultStringIfNull(jsonKeyFrame.getAsJsonObject().get("Level"), "Trace");
 					if (!level.contentEquals("") && !level.contentEquals("Trace")) {
 						String keyFrameTimeStamp = jsonKeyFrame.getAsJsonObject().get("Timestamp").getAsJsonObject()
 								.get("Value").getAsString();
 						String keyFrameLogMessage = jsonKeyFrame.getAsJsonObject().get("LogMessage").getAsString();
-						String keyFrame = String.format(Messages.CASE_STACKTRACE_FORMAT, keyFrameTimeStamp,
-								keyFrameLogMessage);
+						JsonElement keyFrameBlockTitle = jsonKeyFrame.getAsJsonObject().get("BlockTitle");
+						
+						if (keyFrameBlockTitle != null) {
+							keyFrame = String.format(Messages.CASE_STACKTRACE_FORMAT_BLOCKTITLE, keyFrameTimeStamp,
+									keyFrameBlockTitle.getAsString(), keyFrameLogMessage);
+						} else {
+							keyFrame = String.format(Messages.CASE_STACKTRACE_FORMAT, keyFrameTimeStamp,
+									keyFrameLogMessage);
+						}
 						listener.getLogger().println(keyFrame);
 						fullKeyframes.append(keyFrame);
 						fullKeyframes.append("&#xA;");
 					}
 				}
 
-				fullKeyframes.append("Environment: ").append(environmentTitle).append("&#xA;");
-				listener.getLogger().println("Environment: " + environmentTitle);
+				fullKeyframes.append("FlowTitle: ").append(environmentTitle).append("&#xA;");
+				listener.getLogger().println("FlowTitle: " + environmentTitle);
 				fullKeyframes.append("Schedule: ").append(scheduleTitle);
 				listener.getLogger().println("Schedule: " + scheduleTitle);
 
