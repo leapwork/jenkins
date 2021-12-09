@@ -426,8 +426,9 @@ public final class PluginHandler {
 		try {
 			FilePath reportFile;
 			if (workspace.isRemote()) {
+				String fileName = "/"+JUnitReportFile;
 				VirtualChannel channel = workspace.getChannel();
-				reportFile = new FilePath(channel, Paths.get(workspace.toURI().getPath(), JUnitReportFile).toString());
+				reportFile = new FilePath(channel, workspace + fileName);
 				listener.getLogger()
 						.println(String.format(Messages.FULL_REPORT_FILE_PATH, reportFile.toURI().getPath()));
 			} else {
