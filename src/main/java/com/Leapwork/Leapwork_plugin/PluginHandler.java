@@ -426,7 +426,7 @@ public final class PluginHandler {
 		try {
 			FilePath reportFile;
 			if (workspace.isRemote()) {
-				String fileName = "/"+JUnitReportFile;
+				String fileName = "/" + JUnitReportFile;
 				VirtualChannel channel = workspace.getChannel();
 				reportFile = new FilePath(channel, workspace + fileName);
 				listener.getLogger()
@@ -607,6 +607,16 @@ public final class PluginHandler {
 			JsonElement jsonFlowStatus = flowInfo.get("Status");
 			String flowStatus = Utils.defaultStringIfNull(jsonFlowStatus, "NoStatus");
 
+			// AgentInfo
+			JsonElement jsonAgentInfo = jsonRunItem.get("AgentInfo");
+			JsonObject AgentInfo = jsonAgentInfo.getAsJsonObject();
+			JsonElement jsonAgentId = AgentInfo.get("AgentId");
+			UUID agentId = Utils.defaultUuidIfNull(jsonAgentId, UUID.randomUUID());
+			JsonElement jsonAgentTitle = AgentInfo.get("AgentTitle");
+			String agentTitle = Utils.defaultStringIfNull(jsonAgentTitle);
+			JsonElement jsonAgentConnectionType = AgentInfo.get("ConnectionType");
+			String agentConnectionType = Utils.defaultStringIfNull(jsonAgentConnectionType, "Not defined");
+
 			JsonElement jsonRunId = jsonRunItem.get("AutomationRunId");
 			UUID runId = Utils.defaultUuidIfNull(jsonRunId, UUID.randomUUID());
 
@@ -623,7 +633,7 @@ public final class PluginHandler {
 				return runItem;
 			} else {
 				Failure keyframes = getRunItemKeyFrames(client, controllerApiHttpAddress, accessKey, runItemId, runItem,
-						scheduleTitle, flowTitle, listener);
+						scheduleTitle, agentTitle, listener);
 				runItem.failure = keyframes;
 				return runItem;
 			}
@@ -666,7 +676,7 @@ public final class PluginHandler {
 	}
 
 	public Failure getRunItemKeyFrames(AsyncHttpClient client, String controllerApiHttpAddress, String accessKey,
-			UUID runItemId, RunItem runItem, String scheduleTitle, String environmentTitle, final TaskListener listener)
+			UUID runItemId, RunItem runItem, String scheduleTitle, String agentTitle, final TaskListener listener)
 			throws Exception {
 
 		String uri = String.format(Messages.GET_RUN_ITEM_KEYFRAMES_URI, controllerApiHttpAddress, runItemId.toString());
@@ -686,14 +696,14 @@ public final class PluginHandler {
 
 				for (JsonElement jsonKeyFrame : jsonKeyframes) {
 					String keyFrame = "";
-					
+
 					String level = Utils.defaultStringIfNull(jsonKeyFrame.getAsJsonObject().get("Level"), "Trace");
 					if (!level.contentEquals("") && !level.contentEquals("Trace")) {
 						String keyFrameTimeStamp = jsonKeyFrame.getAsJsonObject().get("Timestamp").getAsJsonObject()
 								.get("Value").getAsString();
 						String keyFrameLogMessage = jsonKeyFrame.getAsJsonObject().get("LogMessage").getAsString();
 						JsonElement keyFrameBlockTitle = jsonKeyFrame.getAsJsonObject().get("BlockTitle");
-						
+
 						if (keyFrameBlockTitle != null) {
 							keyFrame = String.format(Messages.CASE_STACKTRACE_FORMAT_BLOCKTITLE, keyFrameTimeStamp,
 									keyFrameBlockTitle.getAsString(), keyFrameLogMessage);
@@ -707,8 +717,8 @@ public final class PluginHandler {
 					}
 				}
 
-				fullKeyframes.append("FlowTitle: ").append(environmentTitle).append("&#xA;");
-				listener.getLogger().println("FlowTitle: " + environmentTitle);
+				fullKeyframes.append("AgentTitle: ").append(agentTitle).append("&#xA;");
+				listener.getLogger().println("AgentTitle: " + agentTitle);
 				fullKeyframes.append("Schedule: ").append(scheduleTitle);
 				listener.getLogger().println("Schedule: " + scheduleTitle);
 
