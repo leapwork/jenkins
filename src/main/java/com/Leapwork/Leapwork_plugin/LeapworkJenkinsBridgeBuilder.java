@@ -1,6 +1,5 @@
 package com.Leapwork.Leapwork_plugin;
 
-import hudson.util.Secret;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -34,8 +33,9 @@ import hudson.tasks.BuildStepDescriptor;
 import hudson.tasks.Builder;
 import hudson.util.FormValidation;
 import hudson.util.ListBoxModel;
+import hudson.util.Secret;
 import jenkins.tasks.SimpleBuildStep;
-import net.sf.json.JSONObject;
+import net.sf.json.JSONObject;		
 
 public class LeapworkJenkinsBridgeBuilder extends Builder implements SimpleBuildStep {
 
@@ -248,7 +248,7 @@ public class LeapworkJenkinsBridgeBuilder extends Builder implements SimpleBuild
 				listener.getLogger().println("SUCCESS");
 				build.setResult(Result.SUCCESS);
 			}
-
+	
 			listener.getLogger().println(Messages.PLUGIN_SUCCESSFUL_FINISH);
 
 		} catch (AbortException | InterruptedException e) {

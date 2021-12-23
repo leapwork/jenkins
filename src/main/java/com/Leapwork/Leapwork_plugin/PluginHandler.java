@@ -1,6 +1,31 @@
 package com.Leapwork.Leapwork_plugin;
 
-import com.Leapwork.Leapwork_plugin.model.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.StringWriter;
+import java.net.ConnectException;
+import java.net.URI;
+import java.net.UnknownHostException;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.ExecutionException;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+
+import com.Leapwork.Leapwork_plugin.model.Failure;
+import com.Leapwork.Leapwork_plugin.model.InvalidSchedule;
+import com.Leapwork.Leapwork_plugin.model.LeapworkRun;
+import com.Leapwork.Leapwork_plugin.model.RunCollection;
+import com.Leapwork.Leapwork_plugin.model.RunItem;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -11,19 +36,8 @@ import com.ning.http.client.Response;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import hudson.EnvVars;
 import hudson.FilePath;
-import hudson.model.Run;
 import hudson.model.TaskListener;
 import hudson.remoting.VirtualChannel;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import java.io.*;
-import java.net.ConnectException;
-import java.net.UnknownHostException;
-import java.nio.file.Paths;
-import java.util.*;
-import java.util.concurrent.ExecutionException;
 
 public final class PluginHandler {
 
@@ -423,12 +437,15 @@ public final class PluginHandler {
 
 	public void createJUnitReport(FilePath workspace, String JUnitReportFile, final TaskListener listener,
 			RunCollection buildResult) throws Exception {
-		try {
+		try {	
 			FilePath reportFile;
 			if (workspace.isRemote()) {
 				String fileName = "/" + JUnitReportFile;
+				
 				VirtualChannel channel = workspace.getChannel();
-				reportFile = new FilePath(channel, workspace + fileName);
+				URI uri = workspace.toURI();
+				String workspacePathUrl = Paths.get(Paths.get(workspace.toURI()).toString(), JUnitReportFile).toString();
+				reportFile = new FilePath(channel, workspacePathUrl);
 				listener.getLogger()
 						.println(String.format(Messages.FULL_REPORT_FILE_PATH, reportFile.toURI().getPath()));
 			} else {
