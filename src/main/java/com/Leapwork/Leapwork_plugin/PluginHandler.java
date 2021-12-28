@@ -712,15 +712,14 @@ public final class PluginHandler {
 				StringBuilder fullKeyframes = new StringBuilder("");
 
 				for (JsonElement jsonKeyFrame : jsonKeyframes) {
-					String keyFrame = "";
-
+					
 					String level = Utils.defaultStringIfNull(jsonKeyFrame.getAsJsonObject().get("Level"), "Trace");
 					if (!level.contentEquals("") && !level.contentEquals("Trace")) {
 						String keyFrameTimeStamp = jsonKeyFrame.getAsJsonObject().get("Timestamp").getAsJsonObject()
 								.get("Value").getAsString();
 						String keyFrameLogMessage = jsonKeyFrame.getAsJsonObject().get("LogMessage").getAsString();
 						JsonElement keyFrameBlockTitle = jsonKeyFrame.getAsJsonObject().get("BlockTitle");
-
+						String keyFrame = "";
 						if (keyFrameBlockTitle != null) {
 							keyFrame = String.format(Messages.CASE_STACKTRACE_FORMAT_BLOCKTITLE, keyFrameTimeStamp,
 									keyFrameBlockTitle.getAsString(), keyFrameLogMessage);
