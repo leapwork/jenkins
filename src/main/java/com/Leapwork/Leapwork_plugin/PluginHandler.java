@@ -21,11 +21,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
-import com.Leapwork.Leapwork_plugin.model.Failure;
-import com.Leapwork.Leapwork_plugin.model.InvalidSchedule;
-import com.Leapwork.Leapwork_plugin.model.LeapworkRun;
-import com.Leapwork.Leapwork_plugin.model.RunCollection;
-import com.Leapwork.Leapwork_plugin.model.RunItem;
+import com.Leapwork.Leapwork_plugin.model.*;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
