@@ -444,7 +444,7 @@ public final class PluginHandler {
 				
 				VirtualChannel channel = workspace.getChannel();
 				URI uri = workspace.toURI();
-				String workspacePathUrl = Paths.get(Paths.get(workspace.toURI()).toString(), JUnitReportFile).toString();
+				String workspacePathUrl = Paths.get(Paths.get(uri).toString(), JUnitReportFile).toString();
 				reportFile = new FilePath(channel, workspacePathUrl);
 				listener.getLogger()
 						.println(String.format(Messages.FULL_REPORT_FILE_PATH, reportFile.toURI().getPath()));
