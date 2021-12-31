@@ -22,6 +22,7 @@ public class Messages {
 
 	public static final String CASE_INFORMATION = "RunItem: %1$s | Status: %2$s | Elapsed: %3$s";
 	public static final String CASE_STACKTRACE_FORMAT = "%1$s - %2$s";
+	public static final String  CASE_STACKTRACE_FORMAT_BLOCKTITLE = "%1$s - %2$s - %3$s";
 
 	public static final String GET_ALL_AVAILABLE_SCHEDULES_URI = "%1$s/api/v4/schedules";
 	public static final String RUN_SCHEDULE_URI = "%1$s/api/v4/schedules/%2$s/runNow%3$s";

@@ -1,5 +1,6 @@
 package com.Leapwork.Leapwork_plugin;
 
+
 import com.Leapwork.Leapwork_plugin.model.*;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -423,11 +424,15 @@ public final class PluginHandler {
 
 	public void createJUnitReport(FilePath workspace, String JUnitReportFile, final TaskListener listener,
 			RunCollection buildResult) throws Exception {
-		try {
+		try {	
 			FilePath reportFile;
 			if (workspace.isRemote()) {
+				String fileName = "/" + JUnitReportFile;
+				
 				VirtualChannel channel = workspace.getChannel();
-				reportFile = new FilePath(channel, Paths.get(workspace.toURI().getPath(), JUnitReportFile).toString());
+				URI uri = workspace.toURI();
+				String workspacePathUrl = Paths.get(Paths.get(uri).toString(), JUnitReportFile).toString();
+				reportFile = new FilePath(channel, workspacePathUrl);
 				listener.getLogger()
 						.println(String.format(Messages.FULL_REPORT_FILE_PATH, reportFile.toURI().getPath()));
 			} else {
@@ -609,12 +614,12 @@ public final class PluginHandler {
 			// AgentInfo
 			JsonElement jsonAgentInfo = jsonRunItem.get("AgentInfo");
 			JsonObject AgentInfo = jsonAgentInfo.getAsJsonObject();
-			JsonElement jsonEnvironmentId = AgentInfo.get("EnvironmentId");
-			UUID environmentId = Utils.defaultUuidIfNull(jsonEnvironmentId, UUID.randomUUID());
-			JsonElement jsonEnvironmentTitle = AgentInfo.get("EnvironmentTitle");
-			String environmentTitle = Utils.defaultStringIfNull(jsonEnvironmentTitle);
-			JsonElement jsonEnvironmentConnectionType = AgentInfo.get("ConnectionType");
-			String environmentConnectionType = Utils.defaultStringIfNull(jsonEnvironmentConnectionType, "Not defined");
+			JsonElement jsonAgentId = AgentInfo.get("AgentId");
+			UUID agentId = Utils.defaultUuidIfNull(jsonAgentId, UUID.randomUUID());
+			JsonElement jsonAgentTitle = AgentInfo.get("AgentTitle");
+			String agentTitle = Utils.defaultStringIfNull(jsonAgentTitle);
+			JsonElement jsonAgentConnectionType = AgentInfo.get("ConnectionType");
+			String agentConnectionType = Utils.defaultStringIfNull(jsonAgentConnectionType, "Not defined");
 
 			JsonElement jsonRunId = jsonRunItem.get("AutomationRunId");
 			UUID runId = Utils.defaultUuidIfNull(jsonRunId, UUID.randomUUID());
@@ -632,7 +637,7 @@ public final class PluginHandler {
 				return runItem;
 			} else {
 				Failure keyframes = getRunItemKeyFrames(client, controllerApiHttpAddress, accessKey, runItemId, runItem,
-						scheduleTitle, environmentTitle, listener);
+						scheduleTitle, agentTitle, listener);
 				runItem.failure = keyframes;
 				return runItem;
 			}
@@ -675,7 +680,7 @@ public final class PluginHandler {
 	}
 
 	public Failure getRunItemKeyFrames(AsyncHttpClient client, String controllerApiHttpAddress, String accessKey,
-			UUID runItemId, RunItem runItem, String scheduleTitle, String environmentTitle, final TaskListener listener)
+			UUID runItemId, RunItem runItem, String scheduleTitle, String agentTitle, final TaskListener listener)
 			throws Exception {
 
 		String uri = String.format(Messages.GET_RUN_ITEM_KEYFRAMES_URI, controllerApiHttpAddress, runItemId.toString());
@@ -694,21 +699,29 @@ public final class PluginHandler {
 				StringBuilder fullKeyframes = new StringBuilder("");
 
 				for (JsonElement jsonKeyFrame : jsonKeyframes) {
+					
 					String level = Utils.defaultStringIfNull(jsonKeyFrame.getAsJsonObject().get("Level"), "Trace");
 					if (!level.contentEquals("") && !level.contentEquals("Trace")) {
 						String keyFrameTimeStamp = jsonKeyFrame.getAsJsonObject().get("Timestamp").getAsJsonObject()
 								.get("Value").getAsString();
 						String keyFrameLogMessage = jsonKeyFrame.getAsJsonObject().get("LogMessage").getAsString();
-						String keyFrame = String.format(Messages.CASE_STACKTRACE_FORMAT, keyFrameTimeStamp,
-								keyFrameLogMessage);
+						JsonElement keyFrameBlockTitle = jsonKeyFrame.getAsJsonObject().get("BlockTitle");
+						String keyFrame = "";
+						if (keyFrameBlockTitle != null) {
+							keyFrame = String.format(Messages.CASE_STACKTRACE_FORMAT_BLOCKTITLE, keyFrameTimeStamp,
+									keyFrameBlockTitle.getAsString(), keyFrameLogMessage);
+						} else {
+							keyFrame = String.format(Messages.CASE_STACKTRACE_FORMAT, keyFrameTimeStamp,
+									keyFrameLogMessage);
+						}
 						listener.getLogger().println(keyFrame);
 						fullKeyframes.append(keyFrame);
 						fullKeyframes.append("&#xA;");
 					}
 				}
 
-				fullKeyframes.append("Environment: ").append(environmentTitle).append("&#xA;");
-				listener.getLogger().println("Environment: " + environmentTitle);
+				fullKeyframes.append("AgentTitle: ").append(agentTitle).append("&#xA;");
+				listener.getLogger().println("AgentTitle: " + agentTitle);
 				fullKeyframes.append("Schedule: ").append(scheduleTitle);
 				listener.getLogger().println("Schedule: " + scheduleTitle);
 
