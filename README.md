@@ -41,12 +41,21 @@ steps{
 	leapworkHostname: 'localhost',
 	leapworkPort: '9001',
 	leapworkReport: 'report.xml',
-	leapworkSchIds: '6a5f047b-b75e-4f07-8eb7-8ab754554bea',
-	leapworkSchNames: 'Runschedule',
-	leapworkScheduleVariables: 'var1:value',
-	leapworkWritePassedFlowKeyFrames: false]
-	)
-}
+	leapworkSchIds: '',//'9c3fa950-d1e8-4e12-bf17-ebc945defad5\ndb5c3a25-8eec-434c-8526-c1b2ef9c56f2',   // splitters: "\n" "," ", "
+    leapworkSchNames: 'Problem schedule, Open Applications,    sch, sch 2,sch 3,sch 4      ,        sch 5',
+    leapworkWritePassedFlowKeyFrames: false,
+    leapworkScheduleVariables: 'var1:val1, var2 : val2,      var3: val3,var4   :   val4,       var5:    val5'
+    ]);
+    step([$class: "JUnitResultArchiver", testResults: "report.xml"]);
+    if(currentBuild.result != "FAILURE") {
+      echo "RESULT: ${currentBuild.result}  SUCCESS INFO"
+      // do something else
+    } else {
+      echo "RESULT: ${currentBuild.result}  FAIL INFO"
+      // do something else
+    }
+  }
+ }
 ```
 
 # Troubleshooting
