@@ -1,7 +1,9 @@
 
 
 function GetSch() {
-	var closestEle =  $(event.target).closest('.repeated-chunk').firstElementChild;
+	var closestElement =  $(event.target).closest('.repeated-chunk');
+	if(closestElement != null){var closestEle = closestElement.firstElementChild}
+	else{closestEle = document}
 
     const leapworkHostname = closestEle.getElementsBySelector("#leapworkHostname").first().value;
     const leapworkPort = closestEle.getElementsBySelector("#leapworkPort").first().value;
