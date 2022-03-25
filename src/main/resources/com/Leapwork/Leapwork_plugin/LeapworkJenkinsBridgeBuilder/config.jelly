@@ -30,8 +30,7 @@
     </f:entry>
 
     <f:entry title="Schedule Names" field="leapworkSchNames" >
-        <!--<f:textarea id="schNames" name="leapworkSchNames" readonly="true"/>-->
-        <f:textarea id="schNames" name="leapworkSchNames"/>
+    <f:textarea id="schNames" name="leapworkSchNames" readonly="true"/>
     </f:entry>
      <f:entry>
          <span class="yui-button">
