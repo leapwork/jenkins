@@ -9,10 +9,10 @@
 	</parent>
 	<groupId>io.jenkins.plugins</groupId>
 	<artifactId>leapwork</artifactId>
-	<version>4.0.5</version>
+	<version>${revision}${changelist}</version>
 	<packaging>hpi</packaging>
 	<properties>
-		<revision>4.0.5</revision>
+		<revision>4.0.6</revision>
 		<changelist>-SNAPSHOT</changelist>
 		<gitHubRepo>jenkinsci/leapwork-plugin</gitHubRepo>
 		<changelist>-SNAPSHOT</changelist>
