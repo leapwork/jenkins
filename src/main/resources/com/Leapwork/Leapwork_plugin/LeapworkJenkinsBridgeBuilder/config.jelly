@@ -12,6 +12,9 @@
   -->
 
 
+	<f:entry title="Enable https protocol"  field="leapworkEnableHttps" >
+	<f:checkbox id="chkEnableHttps"/>
+	</f:entry>
     <f:entry title="Leapwork Controller hostname:" field="leapworkHostname">
       <f:textbox id="leapworkHostname" name="leapworkHostname"/>
     </f:entry>
@@ -38,7 +41,7 @@
        <button type="button" id="mainButton" visibility="visible"  onclick="GetSch()" value="Select Schedules">Select Schedules</button>
               </span>
          </span>
-      <div id="LeapworkContainer" class="popupDiv" style="display:none; min-width:250px; max-width:700px;">
+      <div id="LeapworkContainer" class="popupDiv" style="display:none; min-width:250px; max-width:700px;height: 250px;overflow: auto;">
 
       </div>
    </f:entry>

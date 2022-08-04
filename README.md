@@ -1,4 +1,4 @@
-# Leapwork Integration
+step([$class: 'LeapworkJenkinsBridgeBuilder', leapworkAccessKey: <object of type hudson.util.Secret>, leapworkDelay: '5', leapworkDoneStatusAs: 'Success', leapworkEnableHttps: false, leapworkHostname: 'localhost', leapworkPort: '9001', leapworkReport: 'report.xml', leapworkSchIds: 'd8d06666-c08a-4e32-b8ec-c4c54bf62042', leapworkSchNames: 'NF2R2S1', leapworkScheduleVariables: '', leapworkWritePassedFlowKeyFrames: false])# Leapwork Integration
 This is Leapwork plugin for Jenkins (version 2.277.1 or later)
 
 # More Details
