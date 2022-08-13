@@ -305,7 +305,7 @@ public class LeapworkJenkinsBridgeBuilder extends Builder implements SimpleBuild
 
 					String status = runItem.getCaseStatus();
 
-					resultRun.addTime(runItem.getElapsedTime());
+					
 					switch (status) {
 						case "NoStatus":
 						case "Initializing":
@@ -319,11 +319,13 @@ public class LeapworkJenkinsBridgeBuilder extends Builder implements SimpleBuild
 							resultRun.incPassed();
 							resultRun.runItems.add(runItem);
 							resultRun.incTotal();
+							resultRun.addTime(runItem.getElapsedTime());
 							break;
 						case "Failed":
 							resultRun.incFailed();
 							resultRun.runItems.add(runItem);
 							resultRun.incTotal();
+							resultRun.addTime(runItem.getElapsedTime());
 							break;
 						case "Error":
 						case "Inconclusive":
@@ -332,9 +334,11 @@ public class LeapworkJenkinsBridgeBuilder extends Builder implements SimpleBuild
 							resultRun.incErrors();
 							resultRun.runItems.add(runItem);
 							resultRun.incTotal();
+							resultRun.addTime(runItem.getElapsedTime());
 							break;
 						case "Done":
 							resultRun.runItems.add(runItem);
+							resultRun.addTime(runItem.getElapsedTime());
 							if (isDoneStatusAsSuccess)
 								resultRun.incPassed();
 							else
