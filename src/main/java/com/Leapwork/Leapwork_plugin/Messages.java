@@ -83,6 +83,7 @@ public class Messages {
 	public static final String INPUT_VALUES_MESSAGE = "Leapwork Plugin input parameters:";
 	public static final String INPUT_HOSTNAME_VALUE = "Leapwork controller hostname: %1$s";
 	public static final String INPUT_PORT_VALUE = "Leapwork controller port: %1$s";
+	public static final String INPUT_ENABLE_HTTPS = "Leapwork Https Port is Enabled : %1$s";
 	public static final String INPUT_ACCESS_KEY_VALUE = "Leapwork controller Access Key: %1$s";
 	public static final String INPUT_REPORT_VALUE = "JUnit report file name: %1$s";
 	public static final String INPUT_WORKSPACE_VALUE = "Workspace: %1$s";
