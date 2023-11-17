@@ -28,6 +28,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ning.http.client.AsyncHttpClient;
+import com.ning.http.client.AsyncHttpClientConfig;
 import com.ning.http.client.Response;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
@@ -46,6 +47,7 @@ public final class PluginHandler {
 	private static final String scheduleSeparatorRegex = "\r\n|\n|\\s+,\\s+|,\\s+|\\s+,|,";
 	private static final String variableSeparatorRegex = "\\s+:\\s+|:\\s+|\\s+:|:";
 	private static final String STRING_EMPTY = "";
+	private static final int TIMEOUT_IN_SECONDS = 300;
 
 	private PluginHandler() {
 	}
@@ -394,7 +396,13 @@ public final class PluginHandler {
 
 		listener.error(String.format(Messages.STOPPING_RUN, scheduleTitle, runId));
 		String uri = String.format(Messages.STOP_RUN_URI, controllerApiHttpAddress, runId.toString());
-		try (AsyncHttpClient client = new AsyncHttpClient()) {
+
+		AsyncHttpClientConfig config = new AsyncHttpClientConfig.Builder()
+											.setReadTimeout(TIMEOUT_IN_SECONDS * 1000)
+											.setRequestTimeout(TIMEOUT_IN_SECONDS * 1000)
+											.build();
+
+		try (AsyncHttpClient client = new AsyncHttpClient(config)) {
 
 			Response response = client.preparePut(uri).setBody("").setHeader("AccessKey", accessKey).execute().get();
 			client.close();

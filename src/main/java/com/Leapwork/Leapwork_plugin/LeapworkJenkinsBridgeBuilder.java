@@ -51,7 +51,7 @@ public class LeapworkJenkinsBridgeBuilder extends Builder implements SimpleBuild
 	private boolean leapworkWritePassedFlowKeyFrames;
 	private boolean leapworkEnableHttps;
 	private String leapworkScheduleVariables;
-	private static final int TIMEOUT_IN_SECONDS = 180;
+	private static final int TIMEOUT_IN_SECONDS = 300;
 
 	private static PluginHandler pluginHandler = PluginHandler.getInstance();
 
@@ -292,8 +292,13 @@ public class LeapworkJenkinsBridgeBuilder extends Builder implements SimpleBuild
 			LeapworkRun resultRun, final TaskListener listener) throws AbortException, InterruptedException {
 		List<UUID> runItemsId = new ArrayList<>();
 		Object waiter = new Object();
+
+		AsyncHttpClientConfig config = new AsyncHttpClientConfig.Builder()
+											.setReadTimeout(TIMEOUT_IN_SECONDS * 1000)
+											.setRequestTimeout(TIMEOUT_IN_SECONDS * 1000)
+											.build();
 		// get statuses
-		try (AsyncHttpClient client = new AsyncHttpClient()) {
+		try (AsyncHttpClient client = new AsyncHttpClient(config)) {
 			boolean isStillRunning = true;
 
 			do {
