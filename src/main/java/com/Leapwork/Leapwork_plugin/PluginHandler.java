@@ -47,7 +47,6 @@ public final class PluginHandler {
 	private static final String scheduleSeparatorRegex = "\r\n|\n|\\s+,\\s+|,\\s+|\\s+,|,";
 	private static final String variableSeparatorRegex = "\\s+:\\s+|:\\s+|\\s+:|:";
 	private static final String STRING_EMPTY = "";
-	private static final int TIMEOUT_IN_SECONDS = 300;
 
 	private PluginHandler() {
 	}
@@ -124,6 +123,23 @@ public final class PluginHandler {
 			listener.getLogger()
 					.println(String.format(Messages.TIME_DELAY_NUMBER_IS_INVALID, rawTimeDelay, defaultTimeDelay));
 			return defaultTimeDelay;
+		}
+	}
+
+	public int getTimeout(String rawTimeout, TaskListener listener) {
+		int defaultTimeout = 300;
+		try {
+			if (!rawTimeout.isEmpty() || !"".equals(rawTimeout))
+				return Integer.parseInt(rawTimeout);
+			else {
+				listener.getLogger()
+						.println(String.format(Messages.TIMEOUT_NUMBER_IS_INVALID, rawTimeout, defaultTimeout));
+				return defaultTimeout;
+			}
+		} catch (Exception e) {
+			listener.getLogger()
+					.println(String.format(Messages.TIMEOUT_NUMBER_IS_INVALID, rawTimeout, defaultTimeout));
+			return defaultTimeout;
 		}
 	}
 
@@ -390,7 +406,7 @@ public final class PluginHandler {
 	}
 
 	@SuppressFBWarnings(value = "REC_CATCH_EXCEPTION")
-	public boolean stopRun(String controllerApiHttpAddress, UUID runId, String scheduleTitle, String accessKey,
+	public boolean stopRun(String controllerApiHttpAddress, UUID runId, String scheduleTitle, String accessKey, int timeout, 
 			final TaskListener listener) {
 		boolean isSuccessfullyStopped = false;
 
@@ -398,8 +414,8 @@ public final class PluginHandler {
 		String uri = String.format(Messages.STOP_RUN_URI, controllerApiHttpAddress, runId.toString());
 
 		AsyncHttpClientConfig config = new AsyncHttpClientConfig.Builder()
-											.setReadTimeout(TIMEOUT_IN_SECONDS * 1000)
-											.setRequestTimeout(TIMEOUT_IN_SECONDS * 1000)
+											.setReadTimeout(timeout * 1000)
+											.setRequestTimeout(timeout * 1000)
 											.build();
 
 		try (AsyncHttpClient client = new AsyncHttpClient(config)) {
