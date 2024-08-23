@@ -1,5 +1,6 @@
 <?jelly escape-by-default='true'?>
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+<st:adjunct includes="io.jenkins.plugins.jquery3"/>
   <!--
     This jelly script is used for per-project configuration.
 
@@ -48,6 +49,9 @@
     <f:advanced>
         <f:entry title="Delay (seconds):" field="leapworkDelay">
           <f:textbox name="leapworkDelay" default="${descriptor.DEFAULT_DELAY}"/>
+        </f:entry>
+        <f:entry title="Timeout (seconds):" field="leapworkTimeout">
+          <f:textbox name="leapworkTimeout" default="${descriptor.DEFAULT_TIMEOUT}"/>
         </f:entry>
         <f:entry title="Done Status:" field="leapworkDoneStatusAs">
             <f:select />
