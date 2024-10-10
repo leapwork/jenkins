@@ -271,7 +271,19 @@ public class LeapworkJenkinsBridgeBuilder extends Builder implements SimpleBuild
 			listener.getLogger().println(String.format(Messages.TOTAL_CASES_FAILED, buildResult.getFailedTests()));
 			listener.getLogger().println(String.format(Messages.TOTAL_CASES_ERROR, buildResult.getErrors()));
 
-			pluginHandler.createJUnitReport(workspace, leapworkReport, listener, buildResult);
+			String reportFileExtension = "";
+
+			int reportFileExtensionIndex = leapworkReport.lastIndexOf('.');
+			if (reportFileExtensionIndex > 0) {
+				reportFileExtension = leapworkReport.substring(reportFileExtensionIndex + 1);  
+			}
+
+			if(reportFileExtension.equalsIgnoreCase("json")){
+				pluginHandler.createZephyrScaleJSONReport(workspace, leapworkReport, listener, buildResult);
+			}
+			else{
+				pluginHandler.createJUnitReport(workspace, leapworkReport, listener, buildResult);
+			}
 
 			if (buildResult.getErrors() > 0 || buildResult.getFailedTests() > 0 || invalidSchedules.size() > 0) {
 				if (buildResult.getErrors() > 0)
